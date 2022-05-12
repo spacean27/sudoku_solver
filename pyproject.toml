@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "sudoke-solver"
+name = "sudoku-solver"
 version = "0.1.0"
 description = ""
 authors = ["spacean27 <...@email.com>"]
