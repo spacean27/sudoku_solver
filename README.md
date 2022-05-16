@@ -11,8 +11,8 @@ coming soon
 
 ### Data
 All users are allowed to implement user-made sudoku problem in csv format.  
-1. Place your own sudoku problems to `/dataset/user-made` directory.  
-2. Do NOT forget to change the `--level` parameter when you run the code.
+1. Place your own sudoku problems to `/dataset/user` directory.  
+2. Please do NOT forget to change the `--level` parameter when you run the code.
 
 ### How to build environment
 1. Install poetry from [here](https://python-poetry.org/docs/#installation).
