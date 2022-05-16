@@ -1,6 +1,7 @@
 import pulp
 import itertools
 import sys
+import argparse
 import pandas as pd
 import numpy as np
 
@@ -116,6 +117,8 @@ def main(level):
     print("Status: ", pulp.LpStatus[status])
 
 if __name__ == "__main__":
-    args = sys.argv
-    level = args[1]
+    parser = argparse.ArgumentParser(description="Select Level.")
+    parser.add_argument("--level", default="easy", help="select level (easy, medium, hard)")
+    args = parser.parse_args()
+    level = args.level
     main(level)

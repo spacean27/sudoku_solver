@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import argparse
 import sys
 import glob
 import random
@@ -40,6 +41,8 @@ def main(level):
     print("data_to_compute: ", data_to_compute, sep="\n")
 
 if __name__ == "__main__":
-    args = sys.argv
-    level = args[1]
+    parser = argparse.ArgumentParser(description="Select Level.")
+    parser.add_argument("--level", default="easy", help="select level (easy, medium, hard)")
+    args = parser.parse_args()
+    level = args.level
     main(level)
