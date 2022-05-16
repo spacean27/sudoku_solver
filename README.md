@@ -23,12 +23,12 @@ All users are allowed to implement user-made sudoku problem in csv format.
 1. **Preprocess:** `python preprocess.py --level {easy/medium/hard/user}` default: --level easy.  
 2. **Solve:** `python solve.py --level {easy/medium/hard/user}` default: --level easy.  
 3. **Postprocess:** `python postprocess.py --level {easy/medium/hard/user}`.  
-You do not have to run preprocess.py before running solve.py to solve a sudoku problem.  
-solve.py also runs preprocess.py.  
-postprocess does not work yet.  
+- You do not have to run preprocess.py before running solve.py to solve a sudoku problem.  
+- solve.py also runs preprocess.py.  
+- postprocess does not work yet.  
 
 If you would like to run all scripts at the same time, here is an alternative way.  
 - `python run_all.py`  
-This does not work yet.  
+- This does not work yet.  
 
-**You can runn all only with** `python solve.py --level {easy/medium/hard/user}` **just for now**.
+**You can run to solve a sudoku problem only with** `python solve.py --level {easy/medium/hard/user}` **just for now.**
