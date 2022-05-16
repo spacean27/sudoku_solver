@@ -10,7 +10,7 @@ coming soon
 coming soon
 
 ### Data
-All users are allowed to implement user-made sudoku problem in csv format.  
+All users are allowed to implement user-made sudoku problems in csv format.  
 1. Place your own sudoku problems to `/dataset/user` directory.  
 2. Please do NOT forget to change the `--level` parameter when you run the code.
 
