@@ -1,5 +1,6 @@
 # sudoku_solver
-This Project solves complex sudoku problems for sudoku time-attakers.
+This Project aims to solve complex sudoku problems for sudoku time-attackers.
+The solver is made with Integer Linear Programming.
 
 ## for Users
 ### Web Application
