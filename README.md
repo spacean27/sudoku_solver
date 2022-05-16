@@ -1,6 +1,7 @@
 # sudoku_solver
 This Project aims to solve complex sudoku problems for sudoku time-attackers.  
-The solver is made with Integer Linear Programming.
+The solver is made with Integer Linear Programming.  
+There are 3 problems for each level. Just 1 problem will be selected randomly when you run the code.  
 
 ## for Users
 ### Web Application
