@@ -130,4 +130,4 @@ dmypy.json
 
 # Others
 note.py
-/dataset/user/user1.csv
+dataset/user/user1.csv
