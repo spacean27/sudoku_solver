@@ -5,11 +5,7 @@ import argparse
 import pandas as pd
 import numpy as np
 
-from preprocess import (
-    select_level,
-    preprocess_data_to_display,
-    preprocess_data_to_compute
-    )
+import preprocess
 
 # Import dataset
 def read_data(level):
@@ -103,22 +99,25 @@ def show_result_on_table(result_in_num):
     result_on_table = pd.DataFrame(raw_table).T
     return result_on_table
 
-def main(level):
-    data_to_display, data_to_compute = read_data(level)
-    print("Prepared Data", data_to_display, "-----------------------------", sep="\n")
-
+def main(data_to_compute):
     status, result_in_num = sudoku_solver(data_to_compute)
-    print(" ", "Result", sep="\n")
-
     result_on_table = show_result_on_table(result_in_num)
-    print(result_on_table, "-----------------------------", sep="\n")
-
-    # Print Optimality
-    print("Status: ", pulp.LpStatus[status])
+    return result_on_table, status
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Select Level.")
     parser.add_argument("--level", default="easy", help="select level (easy, medium, hard)")
     args = parser.parse_args()
     level = args.level
-    main(level)
+
+    data_to_display, data_to_compute = preprocess.main(level)
+
+    result_on_table, status = main(data_to_compute)
+
+    print("Prepared Data", data_to_display, "-----------------------------", sep="\n")
+    print(" ", "Result", sep="\n")
+
+    print(result_on_table, "-----------------------------", sep="\n")
+    
+    # Print Optimality
+    print("Status: ", pulp.LpStatus[status])
