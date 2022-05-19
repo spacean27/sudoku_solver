@@ -69,7 +69,7 @@ def main(level):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Select Level.")
-    parser.add_argument("--level", default="easy", help="select level (easy, medium, hard)")
+    parser.add_argument("--level", default="easy", help="select level (easy, medium, hard, user)")
     args = parser.parse_args()
     level = args.level
     problem, data_to_compute = main(level)

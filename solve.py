@@ -37,7 +37,6 @@ def sudoku_solver(data_to_compute):
         value = coodinate[2]
         prob += cells[row][column][value] == 1
 
-
     ## (2) for cells
     for row in rows:
         for column in columns:
@@ -75,7 +74,6 @@ def sudoku_solver(data_to_compute):
     # solver
     status = prob.solve(pulp.PULP_CBC_CMD(msg=0))
 
-
     # result
     result_in_variable = []
     for row in rows:
@@ -112,7 +110,7 @@ def main(data_to_compute):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Select Level.")
-    parser.add_argument("--level", default="easy", help="select level (easy, medium, hard)")
+    parser.add_argument("--level", default="easy", help="select level (easy, medium, hard, user)")
     args = parser.parse_args()
     level = args.level
 
