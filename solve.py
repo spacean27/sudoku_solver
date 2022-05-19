@@ -30,7 +30,7 @@ def sudoku_solver(data_to_compute):
     cells = pulp.LpVariable.dicts("cell", (rows, columns, values),0,1,"Binary")
 
     # Constraint
-    ## (1) fulfills blans with prepared data
+    ## (1) fulfills blanks with nums from prepared data
     for coodinate in data_to_compute:
         row = coodinate[0]
         column = coodinate[1]
