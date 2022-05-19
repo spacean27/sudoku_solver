@@ -37,22 +37,20 @@ def preprocess_data_to_display(data_path):
     Args data_path(str): path 
     Return data_to_display(pd.DataFrame): DataFrame
     """
-    data = pd.read_csv(data_path)
-    #data = data.drop("0",0)
-    data = data.fillna(0)
-    data = data.values
-    data = pd.DataFrame(data)
-    data_to_display = data.astype("int")
-    return data_to_display
+    problem = pd.read_csv(data_path)
+    problem = problem.fillna(0)
+    problem = problem.values
+    problem = problem.astype("int")
+    return problem
 
-def preprocess_data_to_compute(data_to_display):
+def preprocess_data_to_compute(problem):
     data_to_compute = []
     for row in range(0,9):
         for column in range(0,9):
-            if data_to_display[row][column] == 0:
+            if problem[row][column] == 0:
                 continue
             else:
-                value = data_to_display[row][column]
+                value = problem[row][column]
                 data_to_compute.append(list([row+1, column+1, value]))
     return data_to_compute
 
@@ -65,15 +63,15 @@ def main(level):
     if level == "user":
         make_problem()
     data_path = select_problem(level)
-    data_to_display = preprocess_data_to_display(data_path)
-    data_to_compute = preprocess_data_to_compute(data_to_display)
-    return data_to_display, data_to_compute
+    problem = preprocess_data_to_display(data_path)
+    data_to_compute = preprocess_data_to_compute(problem)
+    return problem, data_to_compute
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Select Level.")
     parser.add_argument("--level", default="easy", help="select level (easy, medium, hard)")
     args = parser.parse_args()
     level = args.level
-    data_to_display, data_to_compute = main(level)
-    print("data_to_display: ", data_to_display, sep="\n")
+    problem, data_to_compute = main(level)
+    print("Problem_to_solve: ", problem, sep="\n")
     print("data_to_compute: ", data_to_compute, sep="\n")

@@ -77,32 +77,38 @@ def sudoku_solver(data_to_compute):
 
 
     # result
-    result = []
+    result_in_variable = []
     for row in rows:
         for column in columns:
             for value in values:
                 cell = cells[row][column][value]
                 if  cell.value() == 1.0:
-                    result.append(cell)
+                    result_in_variable.append(cell)
+
     result_in_num = []
-    for i in result:
+    for i in result_in_variable:
         i = int(str(i)[-1])
         result_in_num.append(i)
 
-    return status, result_in_num
-
-def show_result_on_table(result_in_num):
-    raw_table = []
+    result = []
     for i in range(0,81,9):
-        raw_table.append(list(result_in_num[i:i+9]))
+        result_in_row = result_in_num[i:i+9]
+        result.append(result_in_row)
 
-    result_on_table = pd.DataFrame(raw_table).T
-    return result_on_table
+    return status, result
+
+def result_to_show(result_in_num):
+    result_to_show = []
+    for i in range(0,81,9):
+        result_to_show.append(list(result_in_num[i:i+9]))
+
+#    result_to_show = pd.DataFrame(raw_table).T
+    return result_to_show
 
 def main(data_to_compute):
-    status, result_in_num = sudoku_solver(data_to_compute)
-    result_on_table = show_result_on_table(result_in_num)
-    return result_on_table, status
+    status, result = sudoku_solver(data_to_compute)
+    #result_on_table = show_result_on_table(result_in_num)
+    return status, result
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Select Level.")
@@ -112,12 +118,12 @@ if __name__ == "__main__":
 
     data_to_display, data_to_compute = preprocess.main(level)
 
-    result_on_table, status = main(data_to_compute)
+    status, result = main(data_to_compute)
 
     print("Prepared Data", data_to_display, "-----------------------------", sep="\n")
     print(" ", "Result", sep="\n")
 
-    print(result_on_table, "-----------------------------", sep="\n")
+    print(result, "-----------------------------", sep="\n")
     
     # Print Optimality
     print("Status: ", pulp.LpStatus[status])

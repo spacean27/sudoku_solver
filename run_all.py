@@ -1,10 +1,11 @@
 import preprocess
 import solve
+import postprocess
 import argparse
 import pulp
 
 def run_all():
-    data_to_display, data_to_compute = preprocess.main(level)
+    problem, data_to_compute = preprocess.main(level)
     solve.main(data_to_compute)
 
 if __name__ == "__main__":
@@ -13,13 +14,13 @@ if __name__ == "__main__":
     args = parser.parse_args()
     level = args.level
 
-    data_to_display, data_to_compute = preprocess.main(level)
-    result_on_table, status = solve.main(data_to_compute)
+    problem, data_to_compute = preprocess.main(level)
+    status, result = solve.main(data_to_compute)
 
-    print("Prepared Data", data_to_display, "-----------------------------", sep="\n")
+    print("Problem to solve")
+
+    postprocess.display_data(problem)
     print(" ", "Result", sep="\n")
-
-    print(result_on_table, "-----------------------------", sep="\n")
-    
+    postprocess.display_data(result)
     # Print Optimality
     print("Status: ", pulp.LpStatus[status])
